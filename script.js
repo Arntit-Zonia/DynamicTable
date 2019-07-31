@@ -25,8 +25,6 @@ let del = document.querySelector("#delete");
   }
 }());
 
-// getData();
-
 //enables toggle selection for clicked tr
 (function selectData() {
   $('tbody').on("click", "tr", function() {
@@ -36,8 +34,6 @@ let del = document.querySelector("#delete");
   
   $("th").click((e) => e.stopPropagation()); //stops event bubbling
 }());
-
-// selectData();
 
 //support for bootstrap modal
 ($('#myModal').on('shown.bs.modal', function () {
