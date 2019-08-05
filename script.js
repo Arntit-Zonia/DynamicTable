@@ -1,25 +1,33 @@
-var array = [
-  { ID: 1, firstName: "Coffee", lastName: "3£"},
-  { ID: 2, firstName: "Enegry Drink", lastName: "2.5£"},
-  { ID: 3, firstName: "Muffin", lastName: "2£"}
+let arr = [
+  { ID: 1, firstName: "John", lastName: "Doe"},
+  { ID: 2, firstName: "Kevin", lastName: "Swanson"},
+  { ID: 3, firstName: "Grace", lastName: "Smith"}
 ];
 
+//adds support for bootstrap modal
+($('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus');
+}()));
+
+// selectors
 let myTable = document.getElementById("myTable");
 let tbody = document.querySelector("tbody");
 let add = document.querySelector("#add");
 let edit = document.querySelector("#edit");
 let del = document.querySelector("#delete");
+let addElements = document.querySelectorAll(".addElements");
+let editElements = document.querySelectorAll(".editElements");
 
- //gets the property && values from array and inserts them in the table
+ //gets the property && values from arr and inserts them in the table
 (function getData() {
-  for (let obj of array) {
+  for(let obj of arr) {
     let values = Object.values(obj);
     let result = "";
     let tr = document.createElement("tr");
     tbody.appendChild(tr);
   
-    for(let i = 0; i < values.length; i++) {
-      result += `<td>${values[i]}</td>`;
+    for(let elm of values) {
+      result += `<td class="tdData">${elm}</td>`;
     }
     tr.innerHTML = result;
   }
@@ -32,25 +40,31 @@ let del = document.querySelector("#delete");
     $(this).toggleClass('selected');
   });
   
-  $("th").click((e) => e.stopPropagation()); //stops event bubbling
+  $("th").click((e) => e.stopPropagation()); //stops event bubbling && prevents selecting th
 }());
 
-//support for bootstrap modal
-($('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus');
-}()));
+(function preAdd() { //resets input text for Add option on click
+  $("#preAddBtn").click(() => {
+    for(let elm of addElements) {
+      elm.value = "";
+    }
+  });
+}());
 
 // adds a new tr and td by using specified text
 (function addModal() {
-  let addElements = document.querySelectorAll(".addElements");
   let result = "";
+  let tr = document.createElement("tr");
 
   add.addEventListener("click", () => {
-    for(let i = 0; i < addElements.length; i++) {
-      var tr = document.createElement("tr");
+    for(let elm of addElements) { // validation check
+      if(elm.value === "") {
+        result = "";
+        return;
+      }
       tbody.appendChild(tr);
-      result += `<td>${addElements[i].value}</td>`;
-      addElements[i].value = "";
+      result += `<td class="tdData">${elm.value}</td>`;
+      elm.value = "";
     }
     tr.innerHTML = result;
     result = "";
@@ -58,31 +72,44 @@ let del = document.querySelector("#delete");
 }());
 
 // deletes selected tr
-(function delModal() {
+(function delBtn() {
   $(del).click( () => {
-    if($("tr").hasClass("selected")) {
-      $("tr").remove(".selected");
-      
+    if($("tr").hasClass("selected")) $("tr").remove(".selected");
+  });
+}());
+
+// displays the value of the selected tr for easier editing
+(function preEdit() {
+  let preEditBtn = document.querySelector("#preEdit");
+
+  preEditBtn.addEventListener("click", () => {
+    for(let i = 0; i < editElements.length; i++) {
+      let tdData = document.querySelectorAll(".selected .tdData");
+      editElements[i].value = "";
+        if(tdData[i]) {
+          editElements[i].value = tdData[i].innerHTML;
+        } 
     }
   });
 }());
 
 //modifies data already present in the table tr
 (function editModal() {
-  let editElements = document.querySelectorAll(".editElements");
   let result = "";
 
   edit.addEventListener("click", () => {
-    let selected = $("tr").hasClass("selected");
+    // let selected = $("tr").hasClass("selected");
     for(let i = 0; i < editElements.length; i++) {
-      if(selected){
-        let tableData = document.querySelectorAll(".selected");
-        for(let elm of tableData) {
-          result += `<td>${editElements[i].value}</td>`;
-          elm.innerHTML = result;
-          editElements[i].value = "";
-        }
+      if(editElements[i].value === "") {
+        alert("All Fields Required");
+        document.location.reload();
       }
+      let tableData = document.querySelectorAll(".selected");
+      for(let elm of tableData) {
+        result += `<td class="tdData">${editElements[i].value}</td>`;
+        elm.innerHTML = result;
+      }
+      editElements[i].value = "";
     }
     result = "";
   });
