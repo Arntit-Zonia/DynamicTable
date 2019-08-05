@@ -21,7 +21,7 @@
 
                 <!-- Add Modal btn -->
 
-                <button class="btn btn-success rounded-0 w-50" data-toggle="modal" data-target="#addModal">Add</button>
+                <button id="preAddBtn" class="btn btn-success rounded-0 w-50" data-toggle="modal" data-target="#addModal">Add</button>
 
                 <div class="modal fade" id="addModal">
                     <div class="modal-dialog">
@@ -42,7 +42,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer ">
-                                <button id="add" type="button" class="btn btn-success m-auto w-50">Apply</button>
+                                <button id="add" type="button" class="btn btn-success m-auto w-50" data-dismiss="modal">Apply</button>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer ">
-                                <button type="button" id="edit" class="btn btn-primary m-auto w-50">Apply</button>
+                                <button type="button" id="edit" class="btn btn-primary m-auto w-50" data-dismiss="modal">Apply</button>
                             </div>
                         </div>
                     </div>
