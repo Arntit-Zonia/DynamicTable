@@ -14,20 +14,18 @@
 <body>
     <div class="container my-5 w-75">
         <table id="myTable" class="table table-dark rounded-bottom">
-
-            <!-- btn container -->
-
             <div class="d-flex">
 
                 <!-- Add Modal btn -->
 
-                <button id="preAddBtn" class="btn btn-success rounded-0 w-50" data-toggle="modal" data-target="#addModal">Add</button>
+                <button id="preAddBtn" class="btn btn-success rounded-0 w-50" data-toggle="modal"
+                    data-target="#addModal">Add</button>
 
-                <div class="modal fade" id="addModal">
+                <div class="modal fade" id="addModal" data-backdrop="static" data-keyboard="false">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="addModalLabel">Add Elements</h5>
+                            <div class="modal-header d-flex justify-content-center">
+                                <h4 class="modal-title" id="addModalLabel">Add Elements</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -35,43 +33,77 @@
                             <div class="modal-body">
                                 <form>
                                     <div class="container form-group">
-                                        <input type="text"class="form-control my-2 addElements" placeholder="Add ID">
-                                        <input type="text" class="form-control addElements" placeholder="Add First Name">
-                                        <input type="text" class="form-control my-2 addElements" placeholder="Add Last Name">
+                                        <div class="col my-3">
+                                            <label for="addID">ID</label>
+                                            <input type="text" class="form-control my-2 addElements" id="addId"
+                                                placeholder="ID">
+                                        </div>
+                                        <div class="col">
+                                            <label for="addFirstName">First Name</label>
+                                            <input type="text" class="form-control addElements" id="addFirstName"
+                                                placeholder="First Name">
+                                        </div>
+                                        <div class="col my-3">
+                                            <label for="addLastName">Last Name</label>
+                                            <input type="text" class="form-control my-2 addElements" id="addLastName"
+                                                placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" id="addSaveBtn"
+                                            class="btn btn-success m-auto w-25">Save</button>
+                                        <button type="button" id="addCloseBtn" class="btn btn-danger m-auto w-25"
+                                            data-dismiss="modal">Close</button>
                                     </div>
                                 </form>
+
                             </div>
-                            <div class="modal-footer ">
-                                <button id="add" type="button" class="btn btn-success m-auto w-50" data-dismiss="modal">Apply</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
 
                 <!-- Edit Modal btn -->
 
-                <button id="preEdit" class="btn btn-primary rounded-0 w-50" data-toggle="modal" data-target="#editModal">Edit</button>
+                <button id="preEdit" class="btn btn-primary rounded-0 w-50" data-toggle="modal"
+                    data-target="#editModal">Edit</button>
 
-                <div class="modal fade" id="editModal">
+                <div id="editModal" class="modal fade" data-backdrop="static" data-keyboard="false">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel">Edit Elements</h5>
+                            <div class="modal-header d-flex justify-content-center">
+                                <h4 class="modal-title" id="editModalLabel">Edit Elements</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+                           
                             <div class="modal-body">
                                 <form>
                                     <div class="container form-group">
-                                        <input type="text" class="form-control my-2 editElements" placeholder="Edit ID">
-                                        <input type="text" class="form-control editElements" placeholder="Edit First Name">
-                                        <input type="text" class="form-control my-2 editElements" placeholder="Edit Last Name">
+                                        <div class="col my-3">
+                                            <label for="editID">ID</label>
+                                            <input type="text" class="form-control my-2 editElements" id="editId"
+                                                placeholder="Edit ID" required>
+                                        </div>
+                                        <div class="col">
+                                            <label for="editFirstName">First Name</label>
+                                            <input type="text" class="form-control editElements" id="editFirstName"
+                                                placeholder="Edit First Name" required>
+                                        </div>
+                                        <div class="col my-3">
+                                            <label for="editLastName">Last Name</label>
+                                            <input type="text" class="form-control my-2 editElements" id="editLastName"
+                                                placeholder="Edit Last Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" id="editSave"
+                                            class="btn btn-success m-auto w-25">Save</button>
+                                        <button type="button" id="edit" class="btn btn-danger m-auto w-25"
+                                            data-dismiss="modal">Close</button>
                                     </div>
                                 </form>
-                            </div>
-                            <div class="modal-footer ">
-                                <button type="button" id="edit" class="btn btn-primary m-auto w-50" data-dismiss="modal">Apply</button>
                             </div>
                         </div>
                     </div>
@@ -79,7 +111,8 @@
 
                 <!-- Delete btn -->
 
-                <button id="delete" class="btn btn-danger rounded-0 w-50" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                <button id="delete" class="btn btn-danger rounded-0 w-50" data-toggle="modal"
+                    data-target="#deleteModal">Delete</button>
             </div>
 
             <thead>
