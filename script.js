@@ -124,6 +124,7 @@ let preEditBtn = document.querySelector("#preEdit");
       }
     }
     result = "";
+    trCopy = [];
     $("#editModal").modal("hide");
   });
 }());
