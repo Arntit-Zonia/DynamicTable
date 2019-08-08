@@ -1,141 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Exercise</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <title>Exercise</title>
+    </head>
 
-<body>
-    <div class="container my-5 w-75">
-        <table id="myTable" class="table table-dark rounded-bottom">
-            <div class="d-flex">
+    <body>
+        <div id="table-container" class="container my-5">
+                <div id="button-container" class="d-flex justify-content-center">
+                    <button id="preAddBtn" class="btn btn-success rounded-0" data-toggle="modal"data-target="#addModal">Add</button>
+                    <button id="preEdit" class="btn btn-primary rounded-0" data-toggle="modal"data-target="#editModal">Edit</button>
+                    <button id="delete" class="btn btn-danger rounded-0" data-toggle="modal"data-target="#deleteModal">Delete</button>
+                </div>
+            <table id="myTable" class="table table-dark rounded-bottom m-auto">
+                <div class="d-flex">
 
-                <!-- Add Modal btn -->
-
-                <button id="preAddBtn" class="btn btn-success rounded-0 w-50" data-toggle="modal"
-                    data-target="#addModal">Add</button>
-
-                <div class="modal fade" id="addModal" data-backdrop="static" data-keyboard="false">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header d-flex justify-content-center">
-                                <h4 class="modal-title" id="addModalLabel">Add Elements</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="container form-group">
-                                        <div class="col my-3">
+                    <!-- Add Modal -->
+                    <div class="modal fade" id="addModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header d-flex justify-content-center">
+                                    <h4 class="modal-title">Add Elements</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="container form-group">
                                             <label for="addID">ID</label>
-                                            <input type="text" class="form-control my-2 addElements" id="addId"
-                                                placeholder="ID">
-                                        </div>
-                                        <div class="col">
+                                            <input type="text" class="form-control my-2 addElements" id="addId" placeholder="ID">
+
                                             <label for="addFirstName">First Name</label>
-                                            <input type="text" class="form-control addElements" id="addFirstName"
-                                                placeholder="First Name">
-                                        </div>
-                                        <div class="col my-3">
+                                            <input type="text" class="form-control my-2 addElements" id="addFirstName" placeholder="First Name">
+
                                             <label for="addLastName">Last Name</label>
-                                            <input type="text" class="form-control my-2 addElements" id="addLastName"
-                                                placeholder="Last Name">
+                                            <input type="text" class="form-control my-2 addElements" id="addLastName" placeholder="Last Name">
                                         </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <button type="button" id="addSaveBtn"
-                                            class="btn btn-success m-auto w-25">Save</button>
-                                        <button type="button" id="addCloseBtn" class="btn btn-danger m-auto w-25"
-                                            data-dismiss="modal">Close</button>
-                                    </div>
-                                </form>
-
+                                        <button type="button" id="addApply"class="btn btn-success m-auto w-50 d-flex justify-content-center">Apply</button>
+                                    </form>
+                                </div>
                             </div>
-
                         </div>
                     </div>
-                </div>
 
-                <!-- Edit Modal btn -->
-
-                <button id="preEdit" class="btn btn-primary rounded-0 w-50" data-toggle="modal"
-                    data-target="#editModal">Edit</button>
-
-                <div id="editModal" class="modal fade" data-backdrop="static" data-keyboard="false">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header d-flex justify-content-center">
-                                <h4 class="modal-title" id="editModalLabel">Edit Elements</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                           
-                            <div class="modal-body">
-                                <form>
-                                    <div class="container form-group">
-                                        <div class="col my-3">
+                    <!-- Edit Modal -->
+                    <div id="editModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header d-flex justify-content-center">
+                                    <h4 class="modal-title">Edit Elements</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="container form-group">
                                             <label for="editID">ID</label>
-                                            <input type="text" class="form-control my-2 editElements" id="editId"
-                                                placeholder="Edit ID" required>
-                                        </div>
-                                        <div class="col">
+                                            <input type="text" class="form-control my-2 editElements" id="editId" placeholder="Edit ID">
+                                            
                                             <label for="editFirstName">First Name</label>
-                                            <input type="text" class="form-control editElements" id="editFirstName"
-                                                placeholder="Edit First Name" required>
-                                        </div>
-                                        <div class="col my-3">
+                                            <input type="text" class="form-control editElements my-2" id="editFirstName" placeholder="Edit First Name">
+                                
                                             <label for="editLastName">Last Name</label>
-                                            <input type="text" class="form-control my-2 editElements" id="editLastName"
-                                                placeholder="Edit Last Name" required>
+                                            <input type="text" class="form-control my-2 editElements" id="editLastName" placeholder="Edit Last Name">
                                         </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <button type="button" id="editSave"
-                                            class="btn btn-success m-auto w-25">Save</button>
-                                        <button type="button" id="edit" class="btn btn-danger m-auto w-25"
-                                            data-dismiss="modal">Close</button>
-                                    </div>
-                                </form>
+                                        <button type="button" id="editApply"class="btn btn-primary m-auto w-50 d-flex justify-content-center">Apply</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Delete btn -->
+                <thead>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </thead>
+                <tbody>
 
-                <button id="delete" class="btn btn-danger rounded-0 w-50" data-toggle="modal"
-                    data-target="#deleteModal">Delete</button>
-            </div>
+                </tbody>
+            </table>
+        </div>
 
-            <thead>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-    <script src="script.js"></script>
-</body>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+        <script src="script.js"></script>
+    </body>
 
 </html>
